@@ -12,6 +12,17 @@ export default function Home() {
         </div>
       </nav>
 
+      {/* Banner */}
+      <a
+        href="https://github.com/oguzbilgic/kern-ai/releases/tag/v0.6.3"
+        target="_blank"
+        rel="noopener"
+        className="flex items-center gap-3 text-sm text-[var(--muted)] hover:text-[var(--fg)] transition-colors mb-4 py-2"
+      >
+        <span className="bg-[var(--accent)] text-black text-xs font-bold px-2 py-0.5">NEW</span>
+        <span>v0.6.3 — Slack integration, user pairing, backup &amp; restore →</span>
+      </a>
+
       {/* Hero */}
       <section className="mb-20">
         <h1 className="text-5xl font-bold mb-4 tracking-tight">kern</h1>
