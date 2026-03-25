@@ -36,7 +36,7 @@ export default function Home() {
           conversation.
         </p>
         <div className="bg-[#111] border border-[var(--border)] rounded-lg p-4 mb-6 font-mono text-sm">
-          <span className="text-[var(--muted)]">$</span> npx kern-ai init
+          <span className="text-[var(--muted)] prompt">$ </span>npx kern-ai init
           my-agent
         </div>
       </section>
@@ -180,7 +180,7 @@ function Step({ n, label, children }: { n: number; label: string; children: stri
       <div className="flex-1">
         <p className="text-sm text-[var(--muted)] mb-1">{label}</p>
         <div className="bg-[#111] border border-[var(--border)] rounded px-3 py-2 font-mono text-sm">
-          <span className="text-[var(--muted)]">$ </span>{children}
+          <span className="text-[var(--muted)] prompt">$ </span>{children}
         </div>
       </div>
     </div>
