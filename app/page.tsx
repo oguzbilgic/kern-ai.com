@@ -14,7 +14,7 @@ export default function Home() {
 
       {/* Banner */}
       <a
-        href="https://github.com/oguzbilgic/kern-ai/releases/tag/v0.6.3"
+        href="https://github.com/oguzbilgic/kern-ai/blob/master/CHANGELOG.md"
         target="_blank"
         rel="noopener"
         className="flex items-center gap-3 text-sm text-[var(--muted)] hover:text-[var(--fg)] transition-colors mb-4 py-2"
