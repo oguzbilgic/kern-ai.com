@@ -20,7 +20,7 @@ export default function Home() {
         className="flex items-center gap-3 text-sm text-[var(--muted)] hover:text-[var(--fg)] transition-colors mb-4 py-2"
       >
         <span className="bg-[var(--accent)] text-black text-xs font-bold px-2 py-0.5">NEW</span>
-        <span>v0.6.3 — Slack integration, user pairing, backup &amp; restore →</span>
+        <span>v0.8.0 — Steer agents mid-turn, autonomous memory maintenance, OpenCode import →</span>
       </a>
 
       {/* Hero */}
