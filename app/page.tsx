@@ -20,24 +20,24 @@ export default function Home() {
         className="flex items-center gap-3 text-sm text-[var(--muted)] hover:text-[var(--fg)] transition-colors mb-4 py-2"
       >
         <span className="bg-[var(--accent)] text-black text-xs font-bold px-2 py-0.5">NEW</span>
-        <span>v0.8.0 — Steer agents mid-turn, autonomous memory maintenance, OpenCode import →</span>
+        <span>v0.11.0 — Web UI, slash commands, message filters, collapsible tool output →</span>
       </a>
 
       {/* Hero */}
       <section className="mb-20">
-        <h1 className="text-5xl font-bold mb-4 tracking-tight">kern</h1>
+        <h1 className="text-5xl font-bold mb-4 tracking-tight">kern<span className="text-[var(--accent)]">.</span></h1>
         <p className="text-xl text-[var(--muted)] mb-6">
           AI agents built for coworking.
         </p>
         <p className="text-[var(--fg)] mb-8 leading-relaxed">
           One brain across every channel. Your agent sits in Slack channels,
-          Telegram DMs, and the terminal. It knows who&apos;s talking, reads the
-          room, and remembers everything. Humans and agents, same channels, same
-          conversation.
+          Telegram DMs, the terminal, and the browser. It knows who&apos;s talking,
+          reads the room, and remembers everything. Humans and agents, same
+          channels, same conversation.
         </p>
-        <div className="bg-[#111] border border-[var(--border)] rounded-lg p-4 mb-6 font-mono text-sm">
-          <span className="text-[var(--muted)] prompt">$ </span>npx kern-ai init
-          my-agent
+        <div className="bg-[#111] border border-[var(--border)] rounded-lg p-4 mb-6 font-mono text-sm space-y-1">
+          <div><span className="text-[var(--muted)] prompt">$ </span>npm install -g kern-ai</div>
+          <div><span className="text-[var(--muted)] prompt">$ </span>kern init my-agent</div>
         </div>
       </section>
 
@@ -45,6 +45,7 @@ export default function Home() {
       <section className="mb-20">
         <pre className="text-sm text-[var(--muted)] leading-relaxed">
 {`Terminal ─────────┐
+Web UI ───────────┤
 Telegram DM ──────┤── kern ── one session ── one folder
 #engineering ─────┤
 Slack DM ─────────┘`}
@@ -63,27 +64,35 @@ Slack DM ─────────┘`}
         <div className="grid gap-8 sm:grid-cols-2">
           <Feature
             title="One brain"
-            description="A single continuous session across every interface. Message from Telegram, pick up in the TUI, continue in Slack. The agent always knows what happened."
+            description="A single continuous session across every interface. Message from Telegram, pick up in the terminal, continue in the browser. The agent always knows what happened."
           />
           <Feature
             title="Context-aware"
-            description="The agent knows who's talking and where. It adapts — brief on Telegram, detailed in the terminal, professional in Slack channels."
+            description="The agent knows who's talking, which channel it's in, and what happened before. Every message carries identity and interface context. Cross-channel history is shared — nothing is lost between channels."
+          />
+          <Feature
+            title="Agent-to-agent"
+            description="Multiple agents can share channels without infinite loops. They recognize each other, speak when useful, stay silent when not. Humans drive the conversation — agents assist."
+          />
+          <Feature
+            title="Web UI"
+            description="Chat from any browser. Agent sidebar, slash commands with autocomplete, collapsible tool output with edit diffs, markdown rendering, message filters. Works over Tailscale or LAN."
           />
           <Feature
             title="A folder is the agent"
             description="Identity, memory, config, conversation — all in one directory. Plain text, git-tracked, inspectable. Move it, zip it, clone it."
           />
           <Feature
-            title="No infra"
-            description="No server, no database, no vector store. A folder, an API key, and npx kern-ai. Runs as a daemon with one command."
+            title="Heartbeat"
+            description="The agent wakes up periodically, reviews its notes, updates knowledge, and reaches out if something needs attention. Autonomous memory maintenance — no prompting required."
           />
           <Feature
             title="User pairing"
             description="Code-based approval. The first user becomes the operator automatically. Everyone else pairs with a KERN-XXXX code."
           />
           <Feature
-            title="Agent-to-agent"
-            description="Agents know not to loop with each other. They read the room, speak when useful, and let humans drive."
+            title="Slash commands"
+            description="Type /status, /restart, or /help in any channel. Handled instantly by the runtime — no LLM call, zero tokens."
           />
         </div>
       </section>
@@ -92,19 +101,22 @@ Slack DM ─────────┘`}
       <section className="mb-20">
         <h2 className="text-2xl font-bold mb-6">Quick start</h2>
         <div className="space-y-4">
-          <Step n={1} label="Create an agent">
-            npx kern-ai init my-agent
+          <Step n={1} label="Install">
+            npm install -g kern-ai
           </Step>
-          <Step n={2} label="Chat from the terminal">
-            npx kern-ai tui
+          <Step n={2} label="Create an agent">
+            kern init my-agent
           </Step>
-          <Step n={3} label="Or run as a daemon">
-            npx kern-ai start my-agent
+          <Step n={3} label="Chat from the terminal">
+            kern tui
+          </Step>
+          <Step n={4} label="Or open in the browser">
+            kern web start
           </Step>
         </div>
         <p className="text-sm text-[var(--muted)] mt-4">
           The init wizard asks for a provider and API key. Supports OpenRouter,
-          Anthropic, and OpenAI.
+          Anthropic, and OpenAI. Agents run as daemons — start once, connect from anywhere.
         </p>
       </section>
 
@@ -117,7 +129,9 @@ Slack DM ─────────┘`}
           <CmdLine cmd="kern stop" args="[name]" desc="stop agents" />
           <CmdLine cmd="kern restart" args="[name]" desc="restart agents" />
           <CmdLine cmd="kern tui" args="[name]" desc="interactive chat" />
+          <CmdLine cmd="kern web" args="<start|stop|status>" desc="web UI server" />
           <CmdLine cmd="kern list" args="" desc="show all agents" />
+          <CmdLine cmd="kern logs" args="[name]" desc="tail agent logs" />
           <CmdLine cmd="kern pair" args="<agent> <code>" desc="approve user" />
           <CmdLine cmd="kern backup" args="<name>" desc="backup to .tar.gz" />
           <CmdLine cmd="kern restore" args="<file>" desc="restore from backup" />
