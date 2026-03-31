@@ -20,7 +20,7 @@ export default function Home() {
         className="flex items-center gap-3 text-sm text-[var(--muted)] hover:text-[var(--fg)] transition-colors mb-4 py-2"
       >
         <span className="bg-[var(--accent)] text-black text-xs font-bold px-2 py-0.5">NEW</span>
-        <span>v0.11.0 — Web UI, slash commands, message filters, collapsible tool output →</span>
+        <span>v0.14.0 — Long-term memory, web proxy & auth, auto-recall →</span>
       </a>
 
       {/* Hero */}
@@ -75,8 +75,12 @@ Slack DM ─────────┘`}
             description="Multiple agents can share channels without infinite loops. They recognize each other, speak when useful, stay silent when not. Humans drive the conversation — agents assist."
           />
           <Feature
+            title="Long-term memory"
+            description="Semantic search over every past conversation. The agent recalls what you discussed weeks ago — automatically. Relevant memories are injected before each turn. No prompting needed."
+          />
+          <Feature
             title="Web UI"
-            description="Chat from any browser. Agent sidebar, slash commands with autocomplete, collapsible tool output with edit diffs, markdown rendering, message filters. Works over Tailscale or LAN."
+            description="Chat from any browser. Agent sidebar, token-based auth, multi-server discovery, slash commands, collapsible tool output, markdown rendering. One port proxies everything."
           />
           <Feature
             title="A folder is the agent"
@@ -133,6 +137,7 @@ Slack DM ─────────┘`}
           <CmdLine cmd="kern list" args="" desc="show all agents" />
           <CmdLine cmd="kern logs" args="[name]" desc="tail agent logs" />
           <CmdLine cmd="kern pair" args="<agent> <code>" desc="approve user" />
+          <CmdLine cmd="kern import" args="opencode <path>" desc="import sessions" />
           <CmdLine cmd="kern backup" args="<name>" desc="backup to .tar.gz" />
           <CmdLine cmd="kern restore" args="<file>" desc="restore from backup" />
           <CmdLine cmd="kern remove" args="<name>" desc="unregister agent" />
