@@ -2,6 +2,11 @@ import Link from "next/link";
 
 const docs = [
   {
+    slug: "get-started",
+    title: "Get Started",
+    description: "Install kern, create your first agent, and start chatting in under a minute.",
+  },
+  {
     slug: "config",
     title: "Configuration",
     description: "Agent config, environment variables, model selection, provider setup.",
