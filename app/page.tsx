@@ -160,7 +160,7 @@ Slack DM ─────────┘`}
           npm
         </a>
         <a
-          href="https://github.com/oguzbilgic/kern-ai/tree/master/docs"
+          href="/docs"
           className="hover:text-[var(--fg)] transition-colors"
         >
           Docs

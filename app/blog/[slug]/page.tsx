@@ -32,7 +32,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         </Link>
         <div className="flex gap-4 text-sm text-[var(--muted)]">
           <Link href="/blog" className="hover:text-[var(--fg)] transition-colors">Blog</Link>
-          <a href="https://github.com/oguzbilgic/kern-ai/tree/master/docs" className="hover:text-[var(--fg)] transition-colors">Docs</a>
+          <Link href="/docs" className="hover:text-[var(--fg)] transition-colors">Docs</Link>
           <a href="https://github.com/oguzbilgic/kern-ai" className="hover:text-[var(--fg)] transition-colors">GitHub</a>
         </div>
       </nav>
