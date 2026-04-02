@@ -98,9 +98,5 @@ The runtime prepends the metadata tag and pushes it into the queue. The model ne
 
 ## Try it
 
-```bash
-npm install -g kern-ai
-kern init my-agent
-kern tui
-```
+[Get started →](/docs/get-started)
 
