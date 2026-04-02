@@ -104,6 +104,3 @@ kern init my-agent
 kern tui
 ```
 
-Add `TELEGRAM_BOT_TOKEN` to `.kern/.env` and your terminal agent is also on your phone. Same brain, same conversation.
-
-GitHub: https://github.com/oguzbilgic/kern-ai
