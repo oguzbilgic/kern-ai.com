@@ -27,6 +27,11 @@ const docs = [
     description: "Built-in tools — bash, read, write, edit, glob, grep, fetch, message, recall.",
   },
   {
+    slug: "memory",
+    title: "Memory",
+    description: "How agents remember — files, recall, notes injection, and long-term context.",
+  },
+  {
     slug: "pairing",
     title: "Pairing",
     description: "User authentication — pairing codes, operator setup, access control.",
