@@ -21,7 +21,7 @@ export default function Home() {
         className="flex items-center gap-3 text-sm text-[var(--muted)] hover:text-[var(--fg)] transition-colors mb-4 py-2"
       >
         <span className="bg-[var(--accent)] text-black text-xs font-bold px-2 py-0.5">NEW</span>
-        <span>v0.14.0 — Long-term memory, web proxy & auth, auto-recall →</span>
+        <span>v0.15.0 — Syntax highlighting, notes injection, improved grep →</span>
       </a>
 
       {/* Hero */}
@@ -56,7 +56,7 @@ Slack DM ─────────┘`}
           <a href="https://github.com/oguzbilgic/agent-kernel" target="_blank" rel="noopener" className="text-[var(--fg)] underline underline-offset-2 hover:text-[var(--accent)] transition-colors">
             agent-kernel
           </a>{" "}
-          — the open source agent memory pattern ★ 200+
+          — the open source agent memory pattern ★ 300+
         </p>
       </section>
 
@@ -77,11 +77,11 @@ Slack DM ─────────┘`}
           />
           <Feature
             title="Long-term memory"
-            description="Semantic search over every past conversation. The agent recalls what you discussed weeks ago — automatically. Relevant memories are injected before each turn. No prompting needed."
+            description="Semantic search over every past conversation. The agent boots with its latest notes and a summary of recent days — no warmup needed. Relevant memories are injected before each turn automatically."
           />
           <Feature
             title="Web UI"
-            description="Chat from any browser. Agent sidebar, token-based auth, multi-server discovery, slash commands, collapsible tool output, markdown rendering. One port proxies everything."
+            description="Chat from any browser. Syntax-highlighted tool output, fullscreen expand, agent sidebar, token-based auth, multi-server discovery, slash commands, markdown rendering. One port proxies everything."
           />
           <Feature
             title="A folder is the agent"
