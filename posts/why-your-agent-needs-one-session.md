@@ -39,42 +39,7 @@ Every message gets tagged with metadata before it hits the model:
 did you clean up that disk?
 ```
 
-The agent sees the interface, the channel, who's talking, and when. This is injected as part of the user message — the model sees it naturally as context.
-
-When the agent responds, the runtime routes the response back to the originating interface. Telegram gets a Telegram reply, the terminal gets terminal output.
-
-## The message queue
-
-This sounds simple until two people message the agent at the same time from different channels. Or someone sends a follow-up on Telegram while the agent is mid-turn processing a terminal command.
-
-kern uses a single FIFO message queue with channel awareness:
-
-1. Messages arrive from any interface and enter the queue
-2. The queue processes one message at a time
-3. If a new message arrives on the **same channel** as the active turn, it gets injected mid-turn as a `<system-reminder>` — the agent sees it at the next tool step
-4. If it's a **different channel**, it waits behind the current turn
-
-This means same-channel conversation feels responsive (you can interrupt or add context mid-turn), while cross-channel messages don't collide.
-
-## Adapting to the interface
-
-One session doesn't mean one tone. The agent sees `[via telegram, ...]` vs `[via web, ...]` and adjusts:
-
-- **Terminal / Web UI** — detailed output, code blocks, full context. This is the operator.
-- **Telegram** — short and conversational. No one wants a wall of text on their phone.
-- **Slack channels** — the agent reads every message but doesn't have to respond to all of them. If it has nothing useful to add, it responds with `NO_REPLY` and the runtime suppresses it silently. The message is still in its memory.
-
-The agent isn't told "be brief on Telegram" as a hard rule. It sees the interface metadata and learns the appropriate style from its system prompt, which describes each interface's expectations.
-
-## NO_REPLY
-
-This deserves its own explanation because it solves a real problem: agents that won't shut up.
-
-In a Slack channel, there might be 50 messages a day. Most of them aren't for the agent. But the agent sees all of them (that's the point — shared context). Without a mechanism to stay silent, it would respond to everything.
-
-`NO_REPLY` is a convention: if the agent's entire response is the literal string `NO_REPLY`, the runtime swallows it. No message is sent. But the agent's turn still happened — it read the message, updated its internal state, and chose not to speak.
-
-This is also how multiple agents coexist in the same channel without infinite loops. Agent A says something. Agent B sees it, decides it has nothing to add, returns `NO_REPLY`. Conversation over. No ping-pong.
+The agent sees the interface, the channel, who's talking, and when. This is prepended to the user message — the model sees it naturally as context. When the agent responds, the runtime routes the reply back to the originating interface.
 
 ## What the agent remembers
 
@@ -91,9 +56,54 @@ Because there's one session, the agent's context window contains messages from e
 
 Sarah gets context she never asked for — because the agent already knows. No one had to repeat themselves.
 
+## The message queue
+
+This sounds simple until two people message the agent at the same time from different channels. Or someone sends a follow-up on Telegram while the agent is mid-turn processing a terminal command.
+
+kern uses a single FIFO message queue with channel awareness:
+
+1. Messages arrive from any interface and enter the queue
+2. The queue processes one message at a time
+3. If a new message arrives on the **same channel** as the active turn, it gets injected mid-turn — the agent sees it at the next tool step
+4. If it's a **different channel**, it waits behind the current turn
+
+Same-channel conversation feels responsive (you can interrupt or add context mid-turn), while cross-channel messages don't collide.
+
+## Soft-programming
+
+One session doesn't mean one behavior. The agent adapts to each interface — but not through code.
+
+kern's system prompt (the [KERN.md template](https://github.com/oguzbilgic/kern-ai/blob/master/templates/KERN.md)) describes how the agent should behave in each context:
+
+- **Terminal / Web UI** — this is your operator. Be detailed, share everything.
+- **Telegram / Slack DM** — keep it short and conversational.
+- **Slack channels** — read every message but only respond when @mentioned, directly asked, or genuinely useful. Otherwise, stay silent.
+
+The agent also reads `USERS.md` — a file it maintains itself — to know who each person is, their role, and any guardrails. When Sarah asks a question in Slack, the agent knows she's a cofounder who handles finance, and adjusts accordingly.
+
+This is soft-programming: the behavior isn't hardcoded in the runtime, it's described in plain text that the agent reads. You change how the agent behaves in Slack by editing a markdown file, not by writing code.
+
+## NO_REPLY
+
+Shared context creates a problem: agents that won't shut up.
+
+In a Slack channel, there might be 50 messages a day. Most aren't for the agent. But it sees all of them — that's the point. Without a mechanism to stay silent, it would respond to everything.
+
+`NO_REPLY` is a convention: if the agent's entire response is the literal string `NO_REPLY`, the runtime swallows it. No message is sent. But the agent's turn still happened — it read the message, updated its internal state, and chose not to speak.
+
+This is also how multiple agents coexist in the same channel without infinite loops. Agent A says something. Agent B sees it, decides it has nothing to add, returns `NO_REPLY`. No ping-pong.
+
+## How other frameworks handle this
+
+Most agent frameworks unify DMs per user. If the same person messages on Telegram and CLI, they might share a session. That's the easy case.
+
+The hard case is channels. When a message comes from `#engineering` in Slack, it has different participants, different context, different purpose than a Telegram DM. So frameworks create a separate session for it. Each Slack channel gets its own conversation, each group DM gets its own history. This is the default in OpenAI Assistants, LangChain, and most Slack bot frameworks.
+
+kern doesn't split. `#engineering`, your Telegram DM, and the terminal are all the same session. The agent in `#engineering` already knows what you told it on Telegram.
+
 ## Implementation
 
-The core of this is surprisingly small. The [message queue](https://github.com/oguzbilgic/kern-ai/blob/master/src/queue.ts) is ~100 lines. Each interface (Telegram, Slack, CLI, web) is an adapter that converts platform-specific events into a common `IncomingMessage`:
+The core of this is surprisingly small. The [message queue](https://github.com/oguzbilgic/kern-ai/blob/master/src/queue.ts) is ~100 lines. Each interface (Telegram, Slack, CLI, web) is an adapter that converts platform-specific events into a common message:
 
 ```typescript
 interface IncomingMessage {
@@ -105,29 +115,7 @@ interface IncomingMessage {
 }
 ```
 
-The runtime prepends the metadata tag and pushes it into the queue. That's it. The model never knows or cares which interface a message came from — it just sees text with context.
-
-## How other frameworks handle this
-
-Most agent frameworks unify DMs per user. If the same person messages on Telegram and CLI, they might share a session. That's the easy case.
-
-The hard case is channels. When a message comes from `#engineering` in Slack, it has different participants, different context, different purpose than a Telegram DM. So frameworks create a separate session for it. Each Slack channel gets its own conversation, each group DM gets its own history. This is the default in OpenAI Assistants, LangChain, and most Slack bot frameworks.
-
-kern doesn't split. `#engineering`, your Telegram DM, and the terminal are all the same session. The agent in `#engineering` already knows what you told it on Telegram.
-
-## The soft-programming layer
-
-This only works because the agent knows who's talking and where. The metadata isn't just logging — it's how the agent decides what to share and how to behave.
-
-kern's system prompt (the [KERN.md template](https://github.com/oguzbilgic/kern-ai/blob/master/templates/KERN.md)) tells the agent:
-
-- **Terminal / Web UI** — this is your operator. Be detailed, share everything.
-- **Telegram / Slack DM** — keep it short and conversational.
-- **Slack channels** — you read every message but only respond when @mentioned, directly asked, or if you have something genuinely useful to add. Otherwise, `NO_REPLY`.
-
-The agent also reads `USERS.md` — a file it maintains itself — to know who each person is, their role, and any guardrails. When Sarah from the team asks a question in Slack, the agent knows she's a cofounder who handles finance, and adjusts accordingly.
-
-This is soft-programming: the behavior isn't hardcoded in the runtime, it's described in plain text that the agent reads. You change how the agent behaves in Slack by editing a markdown file.
+The runtime prepends the metadata tag and pushes it into the queue. The model never knows or cares which interface a message came from — it just sees text with context.
 
 ## Why not per-channel?
 
