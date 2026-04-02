@@ -107,13 +107,35 @@ interface IncomingMessage {
 
 The runtime prepends the metadata tag and pushes it into the queue. That's it. The model never knows or cares which interface a message came from — it just sees text with context.
 
+## How other frameworks handle this
+
+Most agent frameworks unify DMs per user. If the same person messages on Telegram and CLI, they might share a session. That's the easy case.
+
+The hard case is channels. When a message comes from `#engineering` in Slack, it has different participants, different context, different purpose than a Telegram DM. So frameworks create a separate session for it. Each Slack channel gets its own conversation, each group DM gets its own history. This is the default in OpenAI Assistants, LangChain, and most Slack bot frameworks.
+
+kern doesn't split. `#engineering`, your Telegram DM, and the terminal are all the same session. The agent in `#engineering` already knows what you told it on Telegram.
+
+## The soft-programming layer
+
+This only works because the agent knows who's talking and where. The metadata isn't just logging — it's how the agent decides what to share and how to behave.
+
+kern's system prompt (the [KERN.md template](https://github.com/oguzbilgic/kern-ai/blob/master/templates/KERN.md)) tells the agent:
+
+- **Terminal / Web UI** — this is your operator. Be detailed, share everything.
+- **Telegram / Slack DM** — keep it short and conversational.
+- **Slack channels** — you read every message but only respond when @mentioned, directly asked, or if you have something genuinely useful to add. Otherwise, `NO_REPLY`.
+
+The agent also reads `USERS.md` — a file it maintains itself — to know who each person is, their role, and any guardrails. When Sarah from the team asks a question in Slack, the agent knows she's a cofounder who handles finance, and adjusts accordingly.
+
+This is soft-programming: the behavior isn't hardcoded in the runtime, it's described in plain text that the agent reads. You change how the agent behaves in Slack by editing a markdown file.
+
 ## Why not per-channel?
 
-The obvious objection: what if you want separate conversations? What if the Slack channel is for work and Telegram is for personal stuff?
+The obvious objection: what if you want separate conversations?
 
-In practice, this hasn't been a problem. The agent sees the channel metadata and naturally compartmentalizes. It doesn't dump your Telegram homelab discussion into a Slack work channel. The metadata gives it enough signal.
+In practice, the metadata gives the agent enough signal to compartmentalize. It doesn't dump your Telegram homelab discussion into a Slack work channel unprompted. It reads the room.
 
-If you truly need separate agents, create separate agents. Each is just a folder. But in our experience, one brain is almost always what you want.
+If you truly need isolation, create separate agents. Each is just a folder. But in our experience, one brain is almost always what you want.
 
 ## Try it
 
