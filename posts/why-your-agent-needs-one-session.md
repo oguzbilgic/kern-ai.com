@@ -6,7 +6,7 @@ summary: "Most agent frameworks create a separate conversation per channel. kern
 
 ## The problem
 
-You tell your agent to check disk usage from the terminal. It does. Later you message it on Telegram: "did you clean up that disk?" It has no idea what you're talking about.
+You tell your agent to check disk usage on Telegram. It does. Later someone asks in Slack #engineering: "what's the disk situation?" The agent has no idea — that conversation happened in a different session.
 
 The issue isn't multiple channels — it's multiple sessions. Most agent frameworks create a separate session for each channel. Your Slack channel gets its own conversation history. Your Telegram DM gets another. The terminal starts fresh every time. The agent has the same name, the same system prompt, the same tools — but no shared memory of what just happened.
 
