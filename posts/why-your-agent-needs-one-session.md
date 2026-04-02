@@ -10,11 +10,11 @@ kern takes a different approach: one session, shared across every interface. Thi
 
 ## The problem
 
-Say you have an AI agent that manages your homelab. You SSH into a server and ask it to check disk usage. It runs `df -h`, sees a volume is 90% full, and you discuss a plan.
+Agent frameworks that support multiple channels — Telegram, Slack, Discord, web — typically create a separate session for each one. Some unify DMs from the same user across platforms, but the moment a Slack channel or group DM enters the picture, it gets its own conversation. OpenClaw, for example, supports 20+ messaging platforms but routes each channel through its own gateway session. This is the standard approach.
 
-Later, you're on your phone and message it on Telegram: "did you clean up that disk?" If it's a separate session, it has no idea what you're talking about.
+The result: your agent on Telegram doesn't know what you told it in the terminal. Your Slack channel agent can't reference a conversation that happened on Discord. Each channel is an island.
 
-This is the norm. ChatGPT has separate conversations. Claude has separate conversations. Slack bots have per-channel history. Every interface is an island.
+This matters because agents aren't chatbots. They do work. They run commands, update files, manage infrastructure. If your agent checked disk usage from the terminal and then you message it on Telegram — "did you clean up that disk?" — it should know what you're talking about.
 
 ## One session
 
@@ -92,14 +92,6 @@ In a Slack channel, there might be 50 messages a day. Most aren't for the agent.
 `NO_REPLY` is a convention: if the agent's entire response is the literal string `NO_REPLY`, the runtime swallows it. No message is sent. But the agent's turn still happened — it read the message, updated its internal state, and chose not to speak.
 
 This is also how multiple agents coexist in the same channel without infinite loops. Agent A says something. Agent B sees it, decides it has nothing to add, returns `NO_REPLY`. No ping-pong.
-
-## How other frameworks handle this
-
-Most agent frameworks unify DMs per user. If the same person messages on Telegram and CLI, they might share a session. That's the easy case.
-
-The hard case is channels. When a message comes from `#engineering` in Slack, it has different participants, different context, different purpose than a Telegram DM. So frameworks create a separate session for it. Each Slack channel gets its own conversation, each group DM gets its own history. This is the default in OpenAI Assistants, LangChain, and most Slack bot frameworks.
-
-kern doesn't split. `#engineering`, your Telegram DM, and the terminal are all the same session. The agent in `#engineering` already knows what you told it on Telegram.
 
 ## Implementation
 
