@@ -62,19 +62,6 @@ Sarah gets context she never asked for — because the agent already has it. No 
 
 The metadata also lets the agent compartmentalize without session isolation. It sees `[via slack, #engineering]` and knows this is a work context. It sees `[via telegram, user: oguz]` and knows this is a private conversation. You don't need separate sessions when the model can read the room.
 
-## The message queue
-
-This sounds simple until two people message the agent simultaneously from different channels, or someone sends a follow-up on Telegram while the agent is mid-turn processing a terminal command.
-
-kern uses a single FIFO message queue with channel awareness:
-
-- Messages arrive from any interface and enter the queue
-- The queue processes one message at a time
-- If a new message arrives on the **same channel** as the active turn, it gets injected mid-turn — the agent sees it at the next tool step
-- If it's a **different channel**, it waits behind the current turn
-
-Same-channel conversation feels responsive (you can interrupt or add context mid-turn), while cross-channel messages don't collide.
-
 ## Who is talking and where
 
 One session doesn't mean one behavior. The agent adapts to each interface — but not through code.
