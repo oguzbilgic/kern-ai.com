@@ -30,7 +30,7 @@ Every agent has one continuous session shared across all channels — terminal, 
 
 This is where it gets interesting. kern doesn't just trim old messages — it groups them into **semantic segments**. A segment is a coherent chunk of conversation: "debugging the mempool container", "discussing dashboard design", "reviewing a PR".
 
-Segments are hierarchical. Raw conversation segments (L0) get rolled up into higher-level summaries (L1, L2). An L2 summary might compress 2,000 messages into a paragraph. The Segments tab shows this hierarchy — you can see exactly how your conversation was chunked, summarized, and compressed.
+Segments are hierarchical. Raw conversation segments (L0) get rolled up into higher-level summaries (L1, L2). An L2 summary might compress 2,000 messages into a paragraph. The Segments tab shows this hierarchy — you can see exactly how your conversation was chunked, summarized, and compressed. (For the full deep-dive on how this works, see [Lossless Context Management](/blog/lossless-context-management).)
 
 Filter by what's currently in context to see which summaries the agent is working with right now.
 
