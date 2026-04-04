@@ -69,13 +69,4 @@ When your agent forgets something, you can check: was it trimmed? Was the summar
 
 ## Try it
 
-```bash
-npm install -g kern-ai
-kern init my-agent
-kern start
-kern web start
-```
-
-Open the web UI, click the Memory button in the header. Everything your agent remembers — and everything it forgot — is right there.
-
 [Get started →](/docs/get-started)
