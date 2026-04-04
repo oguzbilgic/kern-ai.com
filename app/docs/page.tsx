@@ -7,6 +7,11 @@ const docs = [
     description: "Install kern, create your first agent, and start chatting in under a minute.",
   },
   {
+    slug: "architecture",
+    title: "Architecture",
+    description: "How kern's processes fit together — agents, web proxy, registry, auth, and service management.",
+  },
+  {
     slug: "config",
     title: "Configuration",
     description: "Agent config, environment variables, model selection, provider setup.",
