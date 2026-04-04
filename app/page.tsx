@@ -21,7 +21,7 @@ export default function Home() {
         className="flex items-center gap-3 text-sm text-[var(--muted)] hover:text-[var(--fg)] transition-colors mb-4 py-2"
       >
         <span className="bg-[var(--accent)] text-black text-xs font-bold px-2 py-0.5">NEW</span>
-        <span>v0.15.0 — Syntax highlighting, notes injection, improved grep →</span>
+        <span>v0.18.1 — Memory UI, service management, Android app →</span>
       </a>
 
       {/* Hero */}
@@ -42,8 +42,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Diagram */}
+      {/* Screenshot */}
       <section className="mb-20">
+        <img
+          src="/images/conversation.png"
+          alt="kern web UI showing a conversation with tool output"
+          className="rounded-lg border border-[var(--border)] mb-6"
+        />
         <pre className="text-sm text-[var(--muted)] leading-relaxed">
 {`Terminal ─────────┐
 Web UI ───────────┤
@@ -77,11 +82,11 @@ Slack DM ─────────┘`}
           />
           <Feature
             title="Long-term memory"
-            description="Semantic search over every past conversation. The agent boots with its latest notes and a summary of recent days — no warmup needed. Relevant memories are injected before each turn automatically."
+            description="Semantic search over every past conversation. Messages are segmented by topic, summarized hierarchically, and compressed into the context window. The Memory UI lets you inspect everything — sessions, segments, notes, recall, and the full context."
           />
           <Feature
             title="Web UI"
-            description="Chat from any browser. Syntax-highlighted tool output, fullscreen expand, agent sidebar, token-based auth, multi-server discovery, slash commands, markdown rendering. One port proxies everything."
+            description="Chat from any browser. Syntax-highlighted tool output, Memory inspector, agent sidebar, token-based auth, multi-server discovery, slash commands, markdown rendering. One port proxies everything."
           />
           <Feature
             title="A folder is the agent"
@@ -135,6 +140,7 @@ Slack DM ─────────┘`}
           <CmdLine cmd="kern restart" args="[name]" desc="restart agents" />
           <CmdLine cmd="kern tui" args="[name]" desc="interactive chat" />
           <CmdLine cmd="kern web" args="<start|stop|status>" desc="web UI server" />
+          <CmdLine cmd="kern install" args="[name]" desc="install as service" />
           <CmdLine cmd="kern list" args="" desc="show all agents" />
           <CmdLine cmd="kern logs" args="[name]" desc="tail agent logs" />
           <CmdLine cmd="kern pair" args="<agent> <code>" desc="approve user" />
