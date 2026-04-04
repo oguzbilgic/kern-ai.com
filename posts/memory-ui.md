@@ -32,8 +32,6 @@ This is where it gets interesting. kern doesn't just trim old messages — it gr
 
 Segments are hierarchical. Raw conversation segments (L0) get rolled up into higher-level summaries (L1, L2). An L2 summary might compress 2,000 messages into a paragraph. The Segments tab shows this hierarchy — you can see exactly how your conversation was chunked, summarized, and compressed.
 
-![Segment detail showing an L0 segment with its summary and metadata](/images/conversation.png)
-
 Filter by what's currently in context to see which summaries the agent is working with right now.
 
 ### Notes
