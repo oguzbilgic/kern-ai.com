@@ -38,7 +38,7 @@ Filter by what's currently in context to see which summaries the agent is workin
 
 ### Notes
 
-Your agent writes daily notes — a narrative log of what happened, what was decided, what's still open. Every message, kern injects two things into the system prompt: the latest daily note in full, and a rolling LLM-generated summary of the previous five days. This means the agent boots with recent context automatically — no warmup needed. The Notes tab shows both, exactly as they appear in the agent's context.
+Your agent writes daily notes — a narrative log of what happened, what was decided, what's still open. On every message, kern injects the latest daily note in full, plus a rolling summary built from the previous five days. The summary is LLM-generated and cached in SQLite — it regenerates once per day when the latest note changes. The Notes tab shows both the raw note and the rolling summary, exactly as they appear in the system prompt.
 
 ![Notes tab showing the agent's daily narrative log](/images/notes.png)
 
