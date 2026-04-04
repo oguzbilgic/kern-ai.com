@@ -22,7 +22,7 @@ The Memory UI is a single overlay with five tabs, each showing a different layer
 
 ### Sessions
 
-Every agent has one continuous session shared across all channels — terminal, web, Telegram, Slack. The Sessions tab shows your session history: when they started, how many messages, which one is live.
+Every agent has [one continuous session](/blog/why-your-agent-needs-one-session) shared across all channels — terminal, web, Telegram, Slack. The Sessions tab shows your session history: when they started, how many messages, which one is live.
 
 ![Sessions tab showing the active session with a green live indicator](/images/sessions.png)
 
