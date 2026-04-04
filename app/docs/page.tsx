@@ -32,6 +32,11 @@ const docs = [
     description: "How agents remember — files, recall, notes injection, and long-term context.",
   },
   {
+    slug: "context",
+    title: "Context",
+    description: "How the prompt is built — system prompt, token budgets, segmentation, compression, inspection.",
+  },
+  {
     slug: "pairing",
     title: "Pairing",
     description: "User authentication — pairing codes, operator setup, access control.",
