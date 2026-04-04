@@ -107,3 +107,25 @@ body {
   border-color: var(--border);
   margin: 2rem 0;
 }
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.875rem;
+}
+
+.prose th, .prose td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+.prose th {
+  background: #1a1a1a;
+  font-weight: 600;
+}
+
+.prose tr:nth-child(even) {
+  background: #111;
+}

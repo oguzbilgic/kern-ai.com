@@ -1,4 +1,5 @@
 import { remark } from "remark";
+import remarkGfm from "remark-gfm";
 import html from "remark-html";
 
 const REPO = "oguzbilgic/kern-ai";
@@ -31,7 +32,7 @@ export async function getDoc(slug: string): Promise<Doc> {
   const titleMatch = raw.match(/^#\s+(.+)$/m);
   const title = titleMatch ? titleMatch[1] : titleFromSlug(slug);
 
-  const result = await remark().use(html).process(raw);
+  const result = await remark().use(remarkGfm).use(html).process(raw);
   return {
     slug,
     title,

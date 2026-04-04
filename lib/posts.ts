@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
+import remarkGfm from "remark-gfm";
 import html from "remark-html";
 
 const postsDirectory = path.join(process.cwd(), "posts");
@@ -37,7 +38,7 @@ export async function getPost(slug: string): Promise<Post> {
     "utf-8"
   );
   const { data, content } = matter(raw);
-  const result = await remark().use(html).process(content);
+  const result = await remark().use(remarkGfm).use(html).process(content);
   return {
     slug,
     title: data.title,
