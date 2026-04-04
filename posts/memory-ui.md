@@ -18,13 +18,13 @@ The problem is visibility. You can't see what's in the window, what got summariz
 
 The Memory UI is a single overlay with five tabs, each showing a different layer of the agent's memory:
 
-![Memory UI showing the Segments tab with semantic conversation segments](/images/memory-segments.png)
+![Memory UI showing the Segments tab with semantic conversation segments](/images/segments.png)
 
 ### Sessions
 
 Every agent has one continuous session shared across all channels — terminal, web, Telegram, Slack. The Sessions tab shows your session history: when they started, how many messages, which one is live.
 
-![Sessions tab showing the active session with a green live indicator](/images/memory-sessions.png)
+![Sessions tab showing the active session with a green live indicator](/images/sessions.png)
 
 ### Segments
 
@@ -32,13 +32,15 @@ This is where it gets interesting. kern doesn't just trim old messages — it gr
 
 Segments are hierarchical. Raw conversation segments (L0) get rolled up into higher-level summaries (L1, L2). An L2 summary might compress 2,000 messages into a paragraph. The Segments tab shows this hierarchy — you can see exactly how your conversation was chunked, summarized, and compressed.
 
-![Segment detail showing an L0 segment with its summary and metadata](/images/memory-segment-detail.png)
+![Segment detail showing an L0 segment with its summary and metadata](/images/conversation.png)
 
 Filter by what's currently in context to see which summaries the agent is working with right now.
 
 ### Notes
 
 Your agent writes daily notes — a narrative log of what happened, what was decided, what's still open. The Notes tab shows the latest note and a summary of recent ones, exactly as injected into the agent's context.
+
+![Notes tab showing the agent's daily narrative log](/images/notes.png)
 
 ### Recall
 
@@ -50,7 +52,7 @@ When the agent's context is trimmed, kern automatically searches recall for rele
 
 The raw view. Everything in the agent's context window right now — system prompt, documents, notes summary, conversation history, compressed summaries. Each section shown as a card with token counts.
 
-![Context tab showing the structured context with token counts per section](/images/memory-context.png)
+![Context tab showing the structured context with token counts per section](/images/context.png)
 
 This is what the model actually sees. No abstractions, no guessing — the exact input that shapes the agent's next response.
 
