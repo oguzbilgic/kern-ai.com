@@ -32,6 +32,8 @@ This is where it gets interesting. kern doesn't just trim old messages — it gr
 
 Segments are hierarchical. Raw conversation segments (L0) get rolled up into higher-level summaries (L1, L2). An L2 summary might compress 2,000 messages into a paragraph. The Segments tab shows this hierarchy — you can see exactly how your conversation was chunked, summarized, and compressed. (For the full deep-dive on how this works, see [Lossless Context Management](/blog/lossless-context-management).)
 
+![Segment detail with hierarchical summaries and metadata](/images/segments-2.png)
+
 Filter by what's currently in context to see which summaries the agent is working with right now.
 
 ### Notes
@@ -45,6 +47,8 @@ Your agent writes daily notes — a narrative log of what happened, what was dec
 Long-term memory via semantic search. Every conversation is indexed into a vector database. The Recall tab shows stats on your recall index — total messages, chunks, sessions, date range — and lets you search it directly.
 
 When the agent's context is trimmed, kern automatically searches recall for relevant past conversations and injects them. The Recall tab shows you what's in the index that powers this.
+
+![Recall tab showing semantic search over past conversations](/images/recall.png)
 
 ### Context
 
