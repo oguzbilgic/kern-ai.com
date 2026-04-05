@@ -34,7 +34,7 @@ export default function Home() {
       {/* Screenshot */}
       <section className="mb-20">
         <img
-          src="/images/conversation.png"
+          src="/images/web-ui.png"
           alt="kern web UI showing a conversation with tool output"
           className="rounded-lg border border-[var(--border)] mb-6"
         />
