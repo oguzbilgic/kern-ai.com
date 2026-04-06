@@ -2,39 +2,40 @@ import Link from "next/link";
 
 const screenshots = [
   {
-    src: "/images/conversation.png",
-    title: "Conversation",
-    description: "Chat with your agent in the browser. Syntax-highlighted tool output, inline diffs, markdown rendering.",
-  },
-  {
     src: "/images/web-ui.png",
     title: "Web UI",
     description: "Agent sidebar with resize, slash command autocomplete, file attachments, and token-based auth.",
+    link: { href: "/docs/interfaces", label: "Interfaces docs →" },
   },
   {
     src: "/images/sessions.png",
     title: "Sessions",
-    description: "Memory UI — browse sessions with message counts, durations, and activity charts.",
+    description: "Browse sessions with message counts, durations, and activity charts.",
+    link: { href: "/blog/memory-ui", label: "See inside your agent's brain →" },
   },
   {
     src: "/images/segments-2.png",
     title: "Segments",
     description: "Hierarchical segment tree (L0/L1/L2). Click any segment to see its summary and compression stats.",
+    link: { href: "/blog/lossless-context-management", label: "How kern compresses 20k messages →" },
   },
   {
     src: "/images/notes.png",
     title: "Notes",
     description: "Daily notes summaries with regeneration. The agent's narrative memory rendered as markdown.",
+    link: { href: "/docs/memory", label: "Memory docs →" },
   },
   {
     src: "/images/recall.png",
     title: "Recall",
     description: "Semantic search over every past conversation. Stats, date range, and instant vector search.",
+    link: { href: "/docs/memory", label: "Memory docs →" },
   },
   {
     src: "/images/context.png",
     title: "Context",
     description: "Full system prompt inspector. Collapsible XML sections with token cost bars and real-time breakdown.",
+    link: { href: "/blog/prompt-caching", label: "How we cut API costs by 10x →" },
   },
 ];
 
@@ -62,7 +63,14 @@ export default function Screenshots() {
         {screenshots.map((s) => (
           <section key={s.src}>
             <h2 className="text-xl font-bold mb-2">{s.title}</h2>
-            <p className="text-sm text-[var(--muted)] mb-4">{s.description}</p>
+            <p className="text-sm text-[var(--muted)] mb-3">{s.description}</p>
+            {s.link && (
+              <p className="text-sm mb-4">
+                <Link href={s.link.href} className="text-[var(--accent)] hover:underline">
+                  {s.link.label}
+                </Link>
+              </p>
+            )}
             <a href={s.src} target="_blank" rel="noopener">
               <img
                 src={s.src}
