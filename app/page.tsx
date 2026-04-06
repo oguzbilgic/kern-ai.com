@@ -82,6 +82,10 @@ Slack DM ─────────┘`}
             description="Identity, memory, config, conversation — all in one directory. Plain text, git-tracked, inspectable. Move it, zip it, clone it."
           />
           <Feature
+            title="Prompt caching"
+            description="Three cache breakpoints keep the 100k+ token prompt stable across turns. 99% cache hit rate mid-turn, 85-95% between turns. Effective 10x cost reduction on input tokens — automatic for Anthropic, zero config."
+          />
+          <Feature
             title="Heartbeat"
             description="The agent wakes up periodically, reviews its notes, updates knowledge, and reaches out if something needs attention. Autonomous memory maintenance — no prompting required."
           />
@@ -115,7 +119,7 @@ Slack DM ─────────┘`}
         </div>
         <p className="text-sm text-[var(--muted)] mt-4">
           The init wizard asks for a provider and API key. Supports OpenRouter,
-          Anthropic, and OpenAI. Agents run as daemons — start once, connect from anywhere.
+          Anthropic, OpenAI, and Ollama (local models). Agents run as daemons — start once, connect from anywhere.
         </p>
       </section>
 
