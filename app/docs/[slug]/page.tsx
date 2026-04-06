@@ -28,6 +28,7 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
         <div className="flex gap-4 text-sm text-[var(--muted)]">
           <Link href="/blog" className="hover:text-[var(--fg)] transition-colors">Blog</Link>
           <Link href="/docs" className="text-[var(--fg)]">Docs</Link>
+          <Link href="/screenshots" className="hover:text-[var(--fg)] transition-colors">Screenshots</Link>
           <a href="https://github.com/oguzbilgic/kern-ai" className="hover:text-[var(--fg)] transition-colors">GitHub</a>
         </div>
       </nav>

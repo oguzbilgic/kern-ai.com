@@ -33,6 +33,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         <div className="flex gap-4 text-sm text-[var(--muted)]">
           <Link href="/blog" className="hover:text-[var(--fg)] transition-colors">Blog</Link>
           <Link href="/docs" className="hover:text-[var(--fg)] transition-colors">Docs</Link>
+          <Link href="/screenshots" className="hover:text-[var(--fg)] transition-colors">Screenshots</Link>
           <a href="https://github.com/oguzbilgic/kern-ai" className="hover:text-[var(--fg)] transition-colors">GitHub</a>
         </div>
       </nav>

@@ -13,6 +13,7 @@ export default function BlogIndex() {
         <div className="flex gap-4 text-sm text-[var(--muted)]">
           <Link href="/blog" className="text-[var(--fg)]">Blog</Link>
           <Link href="/docs" className="hover:text-[var(--fg)] transition-colors">Docs</Link>
+          <Link href="/screenshots" className="hover:text-[var(--fg)] transition-colors">Screenshots</Link>
           <a href="https://github.com/oguzbilgic/kern-ai" className="hover:text-[var(--fg)] transition-colors">GitHub</a>
         </div>
       </nav>
