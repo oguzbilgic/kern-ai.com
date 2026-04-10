@@ -229,8 +229,7 @@ raw ──────────────────`}
                 <CompRow label="Self-hosted" values={["✓", "✗", "✗", "✗", "✓"]} />
                 <CompRow label="Model choice" values={["Any provider", "Claude only", "OpenAI only", "Claude only", "Any provider"]} />
                 <CompRow label="System access" values={["Full (shell, fs)", "Git repos", "Sandbox", "Sandbox", "Full (shell, fs)"]} />
-                <CompRow label="Prompt caching" values={["~90% hit rate", "Built-in", "N/A", "N/A", "✗"]} />
-                <CompRow label="Open source" values={["MIT", "✗", "✗", "✗", "Proprietary"]} />
+                <CompRow label="Open source" values={["MIT", "✗", "✗", "✗", "Apache 2.0"]} />
               </tbody>
             </table>
           </div>
