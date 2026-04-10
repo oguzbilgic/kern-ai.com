@@ -38,6 +38,8 @@ Each agent publishes its own dashboard. Each dashboard shows live data the agent
 
 Now put them all behind one URL.
 
+![Multiple agents with dashboards](/images/agent-intranet.png)
+
 That's your company intranet. Except nobody designed it, nobody maintains it, and it adapts as your business changes. Marketing hires? Their agent spins up a dashboard. A team reorganizes? The agents restructure what they show. The intranet isn't a wiki someone updates quarterly — it's a live reflection of what your agents know and what they're doing.
 
 ## The dark factory for knowledge work
