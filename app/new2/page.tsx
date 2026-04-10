@@ -222,7 +222,7 @@ raw ──────────────────`}
               </thead>
               <tbody className="text-[var(--muted)]">
                 <CompRow label="Focus" values={["General-purpose", "Coding", "Coding", "Work tasks", "General-purpose"]} />
-                <CompRow label="Agent-built UI" values={["Dashboards", "✗", "✗", "✗", "✗"]} />
+                <CompRow label="Agent-built UI" values={["Dashboards", "✗", "✗", "Artifacts", "✗"]} />
                 <CompRow label="Memory" values={["Hierarchical DAG", "CLAUDE.md", "Per-task", "Limited", "Resets daily"]} />
                 <CompRow label="Session model" values={["One unified", "Per-project", "Per-task", "Per-channel", "Per-channel"]} />
                 <CompRow label="Channels" values={["5 interfaces", "Terminal", "API", "Slack", "20+ platforms"]} />
