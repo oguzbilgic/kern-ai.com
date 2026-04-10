@@ -196,10 +196,9 @@ raw ──────────────────`}
 
       {/* Bottom CTA */}
       <section className="px-6 py-24 border-t border-[var(--border)] text-center">
-        <h2 className="text-3xl font-bold mb-4">Start building</h2>
+        <h2 className="text-3xl font-bold mb-4">Your first agent in 60 seconds</h2>
         <p className="text-[var(--muted)] mb-8 max-w-lg mx-auto">
-          Two commands. Pick your model. Your agent remembers everything
-          from the first message.
+          Pick a model. Start talking. It remembers everything from here.
         </p>
         <div className="bg-[#111] border border-[var(--border)] rounded-lg p-6 font-mono text-sm space-y-2 max-w-lg mx-auto text-left mb-8">
           <div><span className="text-[var(--muted)]">$ </span>npm install -g kern-ai</div>
@@ -220,13 +219,37 @@ raw ──────────────────`}
       </section>
 
       {/* Footer */}
-      <footer className="px-6 border-t border-[var(--border)] py-8 max-w-5xl mx-auto flex flex-wrap gap-6 text-sm text-[var(--muted)]">
-        <Link href="/" className="hover:text-[var(--fg)] transition-colors">Home</Link>
-        <Link href="/docs" className="hover:text-[var(--fg)] transition-colors">Docs</Link>
-        <Link href="/blog" className="hover:text-[var(--fg)] transition-colors">Blog</Link>
-        <a href="https://github.com/oguzbilgic/kern-ai" className="hover:text-[var(--fg)] transition-colors">GitHub</a>
-        <a href="https://www.npmjs.com/package/kern-ai" className="hover:text-[var(--fg)] transition-colors">npm</a>
-        <a href="https://github.com/oguzbilgic/agent-kernel" className="hover:text-[var(--fg)] transition-colors">agent-kernel</a>
+      <footer className="px-6 border-t border-[var(--border)] py-12 bg-[#0a0a0a]">
+        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between gap-8">
+          <div>
+            <div className="text-lg font-bold tracking-tight mb-2">
+              kern<span className="text-[var(--accent)]">.</span>
+            </div>
+            <p className="text-xs text-[var(--muted)] max-w-xs leading-relaxed">
+              Open-source agent runtime. Self-hosted, persistent memory,
+              agent-built dashboards. Built for people who want agents
+              that actually do things.
+            </p>
+          </div>
+          <div className="flex gap-12 text-sm">
+            <div className="flex flex-col gap-2">
+              <span className="text-xs text-[var(--muted)] uppercase tracking-wider mb-1">Product</span>
+              <Link href="/docs/get-started" className="text-[var(--muted)] hover:text-[var(--fg)] transition-colors">Get started</Link>
+              <Link href="/docs" className="text-[var(--muted)] hover:text-[var(--fg)] transition-colors">Docs</Link>
+              <Link href="/screenshots" className="text-[var(--muted)] hover:text-[var(--fg)] transition-colors">Screenshots</Link>
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="text-xs text-[var(--muted)] uppercase tracking-wider mb-1">Community</span>
+              <a href="https://github.com/oguzbilgic/kern-ai" className="text-[var(--muted)] hover:text-[var(--fg)] transition-colors">GitHub</a>
+              <a href="https://www.npmjs.com/package/kern-ai" className="text-[var(--muted)] hover:text-[var(--fg)] transition-colors">npm</a>
+              <Link href="/blog" className="text-[var(--muted)] hover:text-[var(--fg)] transition-colors">Blog</Link>
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="text-xs text-[var(--muted)] uppercase tracking-wider mb-1">Related</span>
+              <a href="https://github.com/oguzbilgic/agent-kernel" className="text-[var(--muted)] hover:text-[var(--fg)] transition-colors">agent-kernel</a>
+            </div>
+          </div>
+        </div>
       </footer>
     </main>
   );
