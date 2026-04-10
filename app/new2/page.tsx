@@ -135,6 +135,44 @@ raw ──────────────────`}
         </div>
       </section>
 
+      {/* Memory — visual proof */}
+      <section className="px-6 py-20 border-t border-[var(--border)]">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-3 text-center">See inside the agent&apos;s brain</h2>
+          <p className="text-center text-[var(--muted)] mb-12 max-w-2xl mx-auto">
+            Every conversation is segmented, summarized, and searchable.
+            Five tabs show exactly what the agent knows and how it thinks.
+          </p>
+          <div className="grid gap-6 md:grid-cols-2">
+            <MemoryCard
+              img="/images/segments-2.png"
+              title="Semantic segments"
+              desc="Conversations split by topic, rolled up into hierarchical summaries. Color-coded by token density."
+            />
+            <MemoryCard
+              img="/images/recall.png"
+              title="Recall search"
+              desc="Semantic search over every past conversation. Find decisions, configs, or context from months ago."
+            />
+            <MemoryCard
+              img="/images/sessions.png"
+              title="Sessions"
+              desc="Message activity, channel breakdown, role distribution. See how the agent spends its time."
+            />
+            <MemoryCard
+              img="/images/context.png"
+              title="Context window"
+              desc="Token budget visualization. System prompt, compressed summaries, raw messages — see what fits."
+            />
+          </div>
+          <p className="text-center text-sm text-[var(--muted)] mt-8">
+            <Link href="/blog/memory-ui" className="text-[var(--accent)] hover:underline">
+              See inside your agent&apos;s brain →
+            </Link>
+          </p>
+        </div>
+      </section>
+
       {/* Stats */}
       <section className="px-6 py-12 border-t border-[var(--border)] bg-[#0a0a0a]">
         <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-12 text-center">
@@ -252,6 +290,18 @@ raw ──────────────────`}
         </div>
       </footer>
     </main>
+  );
+}
+
+function MemoryCard({ img, title, desc }: { img: string; title: string; desc: string }) {
+  return (
+    <div className="border border-[var(--border)] rounded-lg overflow-hidden">
+      <img src={img} alt={title} className="w-full border-b border-[var(--border)]" loading="lazy" />
+      <div className="p-4">
+        <h3 className="font-bold text-sm mb-1">{title}</h3>
+        <p className="text-xs text-[var(--muted)] leading-relaxed">{desc}</p>
+      </div>
+    </div>
   );
 }
 
