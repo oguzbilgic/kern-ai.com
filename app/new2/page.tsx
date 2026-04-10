@@ -205,27 +205,32 @@ raw ──────────────────`}
 
       {/* Comparison */}
       <section className="px-6 py-20 border-t border-[var(--border)]">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold mb-3 text-center">Not another chatbot framework</h2>
-          <p className="text-[var(--muted)] mb-8 text-center">kern is infrastructure for agents that do real work.</p>
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold mb-3 text-center">How kern compares</h2>
+          <p className="text-[var(--muted)] mb-8 text-center">Different tools, different bets on what agents should be.</p>
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
               <thead>
                 <tr className="text-left text-[var(--muted)]">
                   <th className="pb-3 pr-4"></th>
                   <th className="pb-3 pr-4 font-mono text-[var(--accent)]">kern</th>
-                  <th className="pb-3 pr-4">ChatGPT</th>
-                  <th className="pb-3 pr-4">Claude</th>
-                  <th className="pb-3">DIY agent</th>
+                  <th className="pb-3 pr-4">Claude Code</th>
+                  <th className="pb-3 pr-4">Codex</th>
+                  <th className="pb-3 pr-4">Cowork</th>
+                  <th className="pb-3">OpenClaw</th>
                 </tr>
               </thead>
               <tbody className="text-[var(--muted)]">
-                <CompRow label="Agent-built UI" values={["Dashboards", "✗", "Artifacts", "DIY"]} />
-                <CompRow label="Persistent memory" values={["Hierarchical", "Limited", "Per-project", "DIY"]} />
-                <CompRow label="Multi-channel" values={["5 interfaces", "✗", "✗", "DIY"]} />
-                <CompRow label="Self-hosted" values={["✓", "✗", "✗", "✓"]} />
-                <CompRow label="System tools" values={["Full access", "Sandbox", "Sandbox", "DIY"]} />
-                <CompRow label="Cost control" values={["10x caching", "Subscription", "Subscription", "DIY"]} />
+                <CompRow label="Focus" values={["General-purpose", "Coding", "Coding", "Work tasks", "General-purpose"]} />
+                <CompRow label="Agent-built UI" values={["Dashboards", "✗", "✗", "✗", "✗"]} />
+                <CompRow label="Memory" values={["Hierarchical DAG", "CLAUDE.md", "Per-task", "Limited", "Resets daily"]} />
+                <CompRow label="Session model" values={["One unified", "Per-project", "Per-task", "Per-channel", "Per-channel"]} />
+                <CompRow label="Channels" values={["5 interfaces", "Terminal", "API", "Slack", "20+ platforms"]} />
+                <CompRow label="Self-hosted" values={["✓", "✗", "✗", "✗", "✓"]} />
+                <CompRow label="Model choice" values={["Any provider", "Claude only", "OpenAI only", "Claude only", "Any provider"]} />
+                <CompRow label="System access" values={["Full (shell, fs)", "Git repos", "Sandbox", "Sandbox", "Full (shell, fs)"]} />
+                <CompRow label="Prompt caching" values={["~90% hit rate", "Built-in", "N/A", "N/A", "✗"]} />
+                <CompRow label="Open source" values={["MIT", "✗", "✗", "✗", "Proprietary"]} />
               </tbody>
             </table>
           </div>
