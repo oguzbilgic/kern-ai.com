@@ -5,7 +5,7 @@ export default function New2Home() {
     <main className="min-h-screen">
       {/* Nav */}
       <nav className="px-6 py-4 max-w-5xl mx-auto flex items-center justify-between">
-        <Link href="/new2" className="text-2xl font-bold tracking-tight">
+        <Link href="/" className="text-2xl font-bold tracking-tight">
           kern<span className="text-[var(--accent)]">.</span>
         </Link>
         <div className="flex gap-4 text-sm text-[var(--muted)]">
