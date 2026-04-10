@@ -22,8 +22,8 @@ export default function New2Home() {
       {/* Hero */}
       <section className="px-6 pt-24 pb-16 max-w-3xl mx-auto text-center">
         <h1 className="text-5xl sm:text-6xl font-bold mb-6 tracking-tight leading-tight">
-          Agents that do the work<br />
-          <span className="text-[var(--muted)]">and show it</span>
+          Agents that do the work
+          <span className="text-[var(--muted)]"> and show it</span>
         </h1>
         <p className="text-xl text-[var(--muted)] mb-8 max-w-2xl mx-auto leading-relaxed">
           kern agents run on your machine, use real tools, remember everything,
