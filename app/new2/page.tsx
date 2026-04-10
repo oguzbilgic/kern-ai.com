@@ -173,6 +173,88 @@ raw ──────────────────`}
         </div>
       </section>
 
+      {/* Thesis: One session */}
+      <section className="px-6 py-24 border-t border-[var(--border)] bg-[#0a0a0a]">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-xs uppercase tracking-widest text-[var(--accent)] mb-3 font-mono">Thesis</p>
+            <h2 className="text-3xl font-bold mb-4">One brain, every channel</h2>
+            <p className="text-[var(--muted)] max-w-xl mx-auto leading-relaxed">
+              Most frameworks create a separate session per channel. Your Slack agent
+              doesn&apos;t know what your Telegram agent just did. kern routes everything
+              into a single continuous session. The agent always has the full picture.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            {/* The others */}
+            <div className="border border-[var(--border)] rounded-lg p-6 bg-[#111]">
+              <p className="text-xs uppercase tracking-wider text-[var(--muted)] mb-4">Typical approach</p>
+              <div className="space-y-3 font-mono text-sm">
+                <div className="flex items-center gap-3">
+                  <span className="text-[var(--muted)]">Terminal</span>
+                  <span className="text-[var(--muted)]">→</span>
+                  <span className="px-2 py-1 rounded bg-[#1a1a1a] border border-[var(--border)] text-[var(--muted)]">Session A</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-[var(--muted)]">Telegram</span>
+                  <span className="text-[var(--muted)]">→</span>
+                  <span className="px-2 py-1 rounded bg-[#1a1a1a] border border-[var(--border)] text-[var(--muted)]">Session B</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-[var(--muted)]">Slack</span>
+                  <span className="text-[var(--muted)]">→</span>
+                  <span className="px-2 py-1 rounded bg-[#1a1a1a] border border-[var(--border)] text-[var(--muted)]">Session C</span>
+                </div>
+              </div>
+              <p className="text-xs text-[var(--muted)] mt-4 leading-relaxed">
+                Context lost between channels. Agent repeats work, forgets decisions, can&apos;t connect the dots.
+              </p>
+            </div>
+
+            {/* kern */}
+            <div className="border border-[var(--accent)] rounded-lg p-6 bg-[#111] shadow-[0_0_20px_rgba(252,213,58,0.05)]">
+              <p className="text-xs uppercase tracking-wider text-[var(--accent)] mb-4">kern</p>
+              <div className="space-y-3 font-mono text-sm">
+                <div className="flex items-center gap-3">
+                  <span>Terminal</span>
+                  <span className="text-[var(--muted)]">→</span>
+                  <span className="px-2 py-1 rounded bg-[#1a1a1a] border border-[var(--accent)] text-[var(--fg)]" style={{borderColor: 'var(--accent)', opacity: 0.8}}>One session</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span>Telegram</span>
+                  <span className="text-[var(--muted)]">↗</span>
+                  <span className="invisible px-2 py-1">One session</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span>Slack</span>
+                  <span className="text-[var(--muted)]">↗</span>
+                  <span className="invisible px-2 py-1">One session</span>
+                </div>
+              </div>
+              <p className="text-xs text-[var(--fg)] mt-4 leading-relaxed" style={{opacity: 0.7}}>
+                Every message from every interface, one context window. The agent connects what you said on Telegram to what someone asked in Slack.
+              </p>
+            </div>
+          </div>
+
+          {/* Sample conversation */}
+          <div className="border border-[var(--border)] rounded-lg p-6 bg-[#111] font-mono text-xs leading-relaxed space-y-2">
+            <div><span className="text-blue-400">[terminal]</span> <span className="text-[var(--muted)]">check disk on kamrui</span></div>
+            <div><span className="text-[var(--accent)]">agent</span> <span className="text-[var(--muted)]">/data is at 90%. Want me to clean up?</span></div>
+            <div><span className="text-green-400">[telegram]</span> <span className="text-[var(--muted)]">did you fix that disk?</span></div>
+            <div><span className="text-[var(--accent)]">agent</span> <span className="text-[var(--muted)]">Not yet — still waiting on your OK to remove old snapshots.</span></div>
+            <div><span className="text-purple-400">[slack #eng]</span> <span className="text-[var(--muted)]">what&apos;s the disk situation?</span></div>
+            <div><span className="text-[var(--accent)]">agent</span> <span className="text-[var(--muted)]">/data on kamrui is at 90%. Oguz and I are planning to remove old snapshots.</span></div>
+          </div>
+          <p className="text-center text-sm text-[var(--muted)] mt-8">
+            <Link href="/blog/why-your-agent-needs-one-session" className="text-[var(--accent)] hover:underline">
+              Why your agent needs one session →
+            </Link>
+          </p>
+        </div>
+      </section>
+
       {/* Stats */}
       <section className="px-6 py-12 border-t border-[var(--border)] bg-[#0a0a0a]">
         <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-12 text-center">
