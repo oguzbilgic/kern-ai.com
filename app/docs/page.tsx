@@ -19,7 +19,7 @@ const docs = [
   {
     slug: "commands",
     title: "Commands",
-    description: "CLI reference — init, start, stop, restart, tui, web, logs, backup, restore.",
+    description: "CLI reference — init, start, stop, restart, tui, web, proxy, install, logs, backup, restore, remove.",
   },
   {
     slug: "interfaces",
@@ -29,7 +29,7 @@ const docs = [
   {
     slug: "tools",
     title: "Tools",
-    description: "Built-in tools — bash, read, write, edit, glob, grep, fetch, message, recall.",
+    description: "Built-in tools — bash, read, write, edit, glob, grep, webfetch, websearch, pdf, image, render, message, recall.",
   },
   {
     slug: "memory",
@@ -40,6 +40,21 @@ const docs = [
     slug: "context",
     title: "Context",
     description: "How the prompt is built — system prompt, token budgets, segmentation, compression, inspection.",
+  },
+  {
+    slug: "caching",
+    title: "Caching",
+    description: "Prompt caching — three breakpoints, stable trim boundaries, provider differences, cost savings.",
+  },
+  {
+    slug: "media",
+    title: "Media",
+    description: "Multi-modal support — images, PDFs, files. Vision pre-digest, content-addressed storage, inline rendering.",
+  },
+  {
+    slug: "sessions",
+    title: "Sessions",
+    description: "Session lifecycle — JSONL storage, SQLite mirror, crash recovery, message persistence.",
   },
   {
     slug: "pairing",

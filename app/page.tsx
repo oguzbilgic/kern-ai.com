@@ -71,12 +71,28 @@ Slack DM ─────────┘`}
             description="Multiple agents can share channels without infinite loops. They recognize each other, speak when useful, stay silent when not. Humans drive the conversation — agents assist."
           />
           <Feature
+            title="Agent-built dashboards"
+            description="Agents create and update HTML dashboards with live data. Rendered in a side panel or inline in chat. Write data, call render, done — no frontend framework needed."
+          />
+          <Feature
+            title="Multi-modal"
+            description="Images, PDFs, and files across every channel. Vision pre-digest describes images automatically. Dedicated pdf and image tools for on-demand analysis. Media stored persistently with content-addressed filenames."
+          />
+          <Feature
+            title="Desktop app"
+            description="Native macOS app via Tauri. Tray icon, keyboard shortcuts (Cmd+1-9 to switch agents), auto-reconnect. Connects directly to any agent over the network."
+          />
+          <Feature
+            title="Direct connections"
+            description="Connect to any agent from the browser — enter its URL and token. No proxy server required. Agents get sticky ports and bind on all interfaces for LAN and Tailscale access."
+          />
+          <Feature
             title="Long-term memory"
-            description="Semantic search over every past conversation. Messages are segmented by topic, summarized hierarchically, and compressed into the context window. The Memory UI lets you inspect everything — sessions, segments, notes, recall, and the full context."
+            description="Semantic search over every past conversation. Messages are segmented by topic, summarized hierarchically, and compressed into the context window. The Memory UI lets you inspect sessions, segments, notes, recall, and the full context."
           />
           <Feature
             title="Web UI"
-            description="Chat from any browser. Syntax-highlighted tool output, Memory inspector, agent sidebar, token-based auth, multi-server discovery, slash commands, markdown rendering. One port proxies everything."
+            description="React-based chat with flat and bubble layouts. Syntax-highlighted tool output, inline render blocks, infinite scroll, drag-and-drop uploads, multi-agent sidebar with live status and unread badges."
           />
           <Feature
             title="A folder is the agent"
@@ -120,7 +136,7 @@ Slack DM ─────────┘`}
         </div>
         <p className="text-sm text-[var(--muted)] mt-4">
           The init wizard asks for a provider and API key. Supports OpenRouter,
-          Anthropic, OpenAI, and Ollama (local models). Agents run as daemons — start once, connect from anywhere.
+          Anthropic, OpenAI, and Ollama (local models). Agents get sticky ports and run as daemons — start once, connect from anywhere.
         </p>
       </section>
 
