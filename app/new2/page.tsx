@@ -44,8 +44,8 @@ export default function New2Home() {
       {/* Screenshot */}
       <section className="px-6 pb-24 max-w-4xl mx-auto">
         <img
-          src="/images/web-ui.png"
-          alt="kern agent with dashboard"
+          src="/images/agent-intranet.png"
+          alt="kern agent intranet"
           className="rounded-xl border border-[var(--border)] shadow-2xl shadow-black/50"
         />
       </section>
