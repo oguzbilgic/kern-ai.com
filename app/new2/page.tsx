@@ -177,12 +177,11 @@ raw ──────────────────`}
       <section className="px-6 py-24 border-t border-[var(--border)] bg-[#0a0a0a]">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
-            <p className="text-xs uppercase tracking-widest text-[var(--accent)] mb-3 font-mono">Thesis</p>
             <h2 className="text-3xl font-bold mb-4">One brain, every channel</h2>
             <p className="text-[var(--muted)] max-w-xl mx-auto leading-relaxed">
-              Most frameworks create a separate session per channel. Your Slack agent
-              doesn&apos;t know what your Telegram agent just did. kern routes everything
-              into a single continuous session. The agent always has the full picture.
+              Other frameworks start a fresh session for each channel. Same agent,
+              but it forgets what happened on Telegram when someone asks in Slack.
+              kern feeds every message into one continuous session — nothing is lost.
             </p>
           </div>
 
