@@ -332,10 +332,7 @@ raw ──────────────────`}
           <Link href="/docs/get-started" className="text-[var(--accent)] hover:underline">
             Get started guide →
           </Link>
-          <Link href="/blog/agent-dashboards" className="text-[var(--muted)] hover:text-[var(--fg)] transition-colors">
-            Read the dashboard thesis →
-          </Link>
-          <a href="https://github.com/oguzbilgic/kern-ai" className="text-[var(--muted)] hover:text-[var(--fg)] transition-colors">
+<a href="https://github.com/oguzbilgic/kern-ai" className="text-[var(--muted)] hover:text-[var(--fg)] transition-colors">
             GitHub →
           </a>
         </div>
