@@ -35,7 +35,7 @@ export default function RootLayout({
           className="flex items-center justify-center gap-3 text-sm text-[var(--muted)] hover:text-[var(--fg)] transition-colors py-2 border-b border-[var(--border)]"
         >
           <span className="bg-[var(--accent)] text-black text-xs font-bold px-2 py-0.5">NEW</span>
-          <span>v0.21.0 — Ollama provider, prompt caching, Web UI redesign →</span>
+          <span>v0.25.0 — Agent-built dashboards, multi-modal media, desktop app →</span>
         </a>
         {children}
       </body>
