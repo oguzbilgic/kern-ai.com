@@ -52,7 +52,11 @@ No Slack threads to read. No emails to parse. No standups where humans report wh
 
 ## The architecture is simple
 
-Here's what an agent dashboard actually looks like. It's a folder:
+Here's what this looks like in practice — an agent's chat on the left, its live sales pipeline dashboard on the right:
+
+![Agent with dashboard](/images/agent-dashboard.png)
+
+The agent maintains the dashboard data, answers questions in chat, and routes dashboard actions through its reasoning. The dashboard is a folder:
 
 ```
 dashboards/pipeline/
