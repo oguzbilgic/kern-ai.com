@@ -24,17 +24,47 @@ const docs = [
   {
     slug: "interfaces",
     title: "Interfaces",
-    description: "Terminal, web UI, Telegram, Slack — how agents connect to each channel.",
+    description: "Terminal, Web UI, Telegram, Slack, Matrix, Nostr, IRC — how agents connect to every channel.",
   },
   {
     slug: "tools",
     title: "Tools",
-    description: "Built-in tools — bash, read, write, edit, glob, grep, webfetch, websearch, pdf, image, render, message, recall.",
+    description: "Built-in tools — bash, read, write, edit, glob, grep, webfetch, websearch, pdf, image, audio, render, message, recall.",
+  },
+  {
+    slug: "skills",
+    title: "Skills",
+    description: "AgentSkills integration — install community skills, bundled skills, dynamic slash commands.",
+  },
+  {
+    slug: "subagents",
+    title: "Sub-agents",
+    description: "Parallel delegated workers — spawn, inspect, cancel, and synthesize sub-agent reasoning loops.",
+  },
+  {
+    slug: "mcp",
+    title: "MCP",
+    description: "Model Context Protocol — connect external tools via local stdio or remote SSE/HTTP servers.",
+  },
+  {
+    slug: "dashboards",
+    title: "Dashboards",
+    description: "Agent-built UIs — live data injection, render tool, panel views, and interactive sidecars.",
+  },
+  {
+    slug: "docker",
+    title: "Docker",
+    description: "Run kern in Docker — containerized agent deployment, compose files, and web daemon setup.",
+  },
+  {
+    slug: "media",
+    title: "Media & Voice",
+    description: "Images, PDFs, and audio — vision pre-digest, speech transcription, TTS voice replies across channels.",
   },
   {
     slug: "memory",
     title: "Memory",
-    description: "How agents remember — files, recall, notes injection, and long-term context.",
+    description: "How agents remember — files, recall vector DB, notes injection, and long-term context.",
   },
   {
     slug: "context",
@@ -47,19 +77,14 @@ const docs = [
     description: "Prompt caching — three breakpoints, stable trim boundaries, provider differences, cost savings.",
   },
   {
-    slug: "media",
-    title: "Media",
-    description: "Multi-modal support — images, PDFs, files. Vision pre-digest, content-addressed storage, inline rendering.",
-  },
-  {
-    slug: "sessions",
-    title: "Sessions",
-    description: "Session lifecycle — JSONL storage, SQLite mirror, crash recovery, message persistence.",
-  },
-  {
     slug: "pairing",
     title: "Pairing",
-    description: "User authentication — pairing codes, operator setup, access control.",
+    description: "User authentication — pairing codes, operator setup, access control across messaging channels.",
+  },
+  {
+    slug: "clients",
+    title: "Clients",
+    description: "Connecting to kern — Desktop app (Tauri), Web UI, TUI, and mobile clients.",
   },
 ];
 

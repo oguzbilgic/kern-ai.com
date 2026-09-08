@@ -6,7 +6,25 @@ const REPO = "oguzbilgic/kern-ai";
 const BRANCH = "master";
 const DOCS_PATH = "docs";
 
-const docFiles = ["get-started", "architecture", "config", "commands", "interfaces", "tools", "memory", "context", "pairing"];
+const docFiles = [
+  "get-started",
+  "architecture",
+  "config",
+  "commands",
+  "interfaces",
+  "tools",
+  "skills",
+  "subagents",
+  "mcp",
+  "dashboards",
+  "docker",
+  "media",
+  "memory",
+  "context",
+  "caching",
+  "pairing",
+  "clients",
+];
 
 export interface Doc {
   slug: string;

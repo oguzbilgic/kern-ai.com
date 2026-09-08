@@ -95,15 +95,17 @@ export default function New2Home() {
           <div>
             <h3 className="text-lg font-bold mb-3">One brain, every channel</h3>
             <p className="text-sm text-[var(--muted)] leading-relaxed mb-4">
-              Terminal, browser, Telegram, Slack — one continuous session.
+              Terminal, browser, Telegram, Slack, Matrix, Nostr, IRC — one continuous session.
               The agent knows who&apos;s talking, what channel it&apos;s in,
               and what happened 10,000 messages ago.
             </p>
             <pre className="text-xs text-[var(--muted)] leading-relaxed font-mono">
 {`Terminal ─────┐
 Web UI ───────┤
-Telegram ─────┤── one session
-Slack ────────┘`}
+Telegram ─────┼── one session
+Slack ────────┤
+Matrix/Nostr ─┤
+IRC ──────────┘`}
             </pre>
           </div>
           <div>
@@ -205,7 +207,7 @@ raw ──────────────────`}
                   <span className="px-2 py-1 rounded bg-[#1a1a1a] border border-[var(--border)] text-[var(--muted)]">Session B</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span className="text-[var(--muted)]">Slack</span>
+                  <span className="text-[var(--muted)]">Slack / IRC</span>
                   <span className="text-[var(--muted)]">→</span>
                   <span className="px-2 py-1 rounded bg-[#1a1a1a] border border-[var(--border)] text-[var(--muted)]">Session C</span>
                 </div>
@@ -220,17 +222,17 @@ raw ──────────────────`}
               <p className="text-xs uppercase tracking-wider text-[var(--accent)] mb-4">kern</p>
               <div className="space-y-3 font-mono text-sm">
                 <div className="flex items-center gap-3">
-                  <span>Terminal</span>
+                  <span>Terminal / Web</span>
                   <span className="text-[var(--muted)]">→</span>
                   <span className="px-2 py-1 rounded bg-[#1a1a1a] border border-[var(--accent)] text-[var(--fg)]" style={{borderColor: 'var(--accent)', opacity: 0.8}}>One session</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span>Telegram</span>
+                  <span>Telegram / Slack</span>
                   <span className="text-[var(--muted)]">↗</span>
                   <span className="invisible px-2 py-1">One session</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <span>Slack</span>
+                  <span>Matrix / Nostr / IRC</span>
                   <span className="text-[var(--muted)]">↗</span>
                   <span className="invisible px-2 py-1">One session</span>
                 </div>
@@ -261,10 +263,10 @@ raw ──────────────────`}
       {/* Stats */}
       <section className="px-6 py-12 border-t border-[var(--border)] bg-[#0a0a0a]">
         <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-12 text-center">
-          <StatBlock value="★ 300+" label="GitHub stars" />
+          <StatBlock value="7" label="Interfaces" />
           <StatBlock value="100k+" label="Token context" />
           <StatBlock value="99%" label="Cache hit rate" />
-          <StatBlock value="4" label="LLM providers" />
+          <StatBlock value="4+" label="LLM providers" />
           <StatBlock value="60s" label="To first message" />
         </div>
       </section>
@@ -276,14 +278,14 @@ raw ──────────────────`}
           <p className="text-[var(--muted)] mb-12 text-center">Not a roadmap. Primitives you can use right now.</p>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <FeatureCard title="Agent-built dashboards" desc="Agents create HTML dashboards with live data injection. Rendered in a side panel or inline in chat." />
-            <FeatureCard title="Multi-modal" desc="Images, PDFs, files across every channel. Vision pre-digest, PDF extraction, dedicated analysis tools." />
-            <FeatureCard title="Desktop app" desc="Native macOS via Tauri. Tray icon, Cmd+1-9 agent switching, direct connections." />
-            <FeatureCard title="Prompt caching" desc="Three cache breakpoints. 99% mid-turn hits, 10x cost reduction. Automatic for Anthropic." />
-            <FeatureCard title="React web UI" desc="Flat and bubble layouts, syntax highlighting, infinite scroll, multi-agent sidebar with live status." />
-            <FeatureCard title="Real tools" desc="bash, read, write, edit, grep, webfetch, websearch, pdf, image, render — full system access." />
-            <FeatureCard title="4 providers" desc="OpenRouter, Anthropic, OpenAI, Ollama. Mix models per role — chat, embeddings, summaries, vision." />
-            <FeatureCard title="Heartbeat" desc="Agents wake periodically — review notes, update knowledge, reach out if needed. Autonomous maintenance." />
-            <FeatureCard title="Plugin architecture" desc="Dashboard, media, recall, notes extracted as plugins. Extend with lifecycle hooks, no core changes." />
+            <FeatureCard title="Voice & Multi-modal" desc="Audio transcription, TTS voice replies, vision pre-digest, and PDF extraction across Telegram and Slack." />
+            <FeatureCard title="Sub-agents" desc="Spawn delegated parallel workers with focused reasoning loops and read-only tools to tackle research in background." />
+            <FeatureCard title="Agent Skills" desc="Ecosystem-compatible skills format. Add community skills, manage with CLI, activate dynamic slash commands." />
+            <FeatureCard title="MCP support" desc="Model Context Protocol client. Connect any external tool over stdio, HTTP, or SSE servers seamlessly." />
+            <FeatureCard title="7 interfaces" desc="Terminal, Web UI, Telegram, Slack, Matrix, Nostr, and IRC — all unified into a single persistent session." />
+            <FeatureCard title="Prompt caching" desc="Three cache breakpoints with stable trim hysteresis. 99% mid-turn hits and up to 10x cost reduction." />
+            <FeatureCard title="Desktop app" desc="Native macOS via Tauri with tray icon, quick agent switching, and direct agent connection." />
+            <FeatureCard title="Docker & Self-hosted" desc="Official Docker images for agents and web UI, or run natively with Node. Complete data ownership." />
           </div>
         </div>
       </section>
@@ -310,7 +312,7 @@ raw ──────────────────`}
                 <CompRow label="Agent-built UI" values={["Dashboards", "✗", "✗", "Artifacts", "✗"]} />
                 <CompRow label="Memory" values={["Hierarchical DAG", "CLAUDE.md", "Per-task", "Limited", "Resets daily"]} />
                 <CompRow label="Session model" values={["One unified", "Per-project", "Per-task", "Per-channel", "Per-channel"]} />
-                <CompRow label="Channels" values={["5 interfaces", "Terminal", "API", "Slack", "20+ platforms"]} />
+                <CompRow label="Channels" values={["7 interfaces", "Terminal", "API", "Slack", "20+ platforms"]} />
                 <CompRow label="Self-hosted" values={["✓", "✗", "✗", "✗", "✓"]} />
                 <CompRow label="Model choice" values={["Any provider", "Claude only", "OpenAI only", "Claude only", "Any provider"]} />
                 <CompRow label="System access" values={["Full (shell, fs)", "Git repos", "Sandbox", "Sandbox", "Full (shell, fs)"]} />
