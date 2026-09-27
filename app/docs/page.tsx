@@ -7,59 +7,79 @@ const docs = [
     description: "Install kern, create your first agent, and start chatting in under a minute.",
   },
   {
+    slug: "docker",
+    title: "Docker",
+    description: "Deploy coworker agents with Docker and Compose — volumes, environment, and lifecycles.",
+  },
+  {
     slug: "architecture",
     title: "Architecture",
-    description: "How kern's processes fit together — agents, web proxy, registry, auth, and service management.",
+    description: "Directory-based agent model, multi-channel session queue, and process isolation.",
   },
   {
     slug: "config",
     title: "Configuration",
-    description: "Agent config, environment variables, model selection, provider setup.",
+    description: "Agent config, environment variables, model selection, and provider options.",
   },
   {
-    slug: "commands",
-    title: "Commands",
-    description: "CLI reference — init, start, stop, restart, tui, web, proxy, install, logs, backup, restore, remove.",
+    slug: "cli",
+    title: "CLI Reference",
+    description: "Commands — init, run, status, tui, web, backup, restore, and scripts.",
+  },
+  {
+    slug: "chat-commands",
+    title: "Chat Commands",
+    description: "In-chat slash and bang commands — !status, !wyd, !jobs, !subagents, !skills, !restart.",
   },
   {
     slug: "interfaces",
     title: "Interfaces",
-    description: "Terminal, web UI, Telegram, Slack — how agents connect to each channel.",
+    description: "Slack, Matrix, Telegram, Discord, IRC, Nostr — how agents connect to every channel.",
   },
   {
     slug: "tools",
     title: "Tools",
-    description: "Built-in tools — bash, read, write, edit, glob, grep, webfetch, websearch, pdf, image, render, message, recall.",
+    description: "Built-in tools — bash, jobs, spawn, subagents, platform APIs, read, write, edit, grep.",
+  },
+  {
+    slug: "subagents",
+    title: "Sub-Agents",
+    description: "Parallel delegated research workers with initiator-aware return routing.",
   },
   {
     slug: "memory",
     title: "Memory",
-    description: "How agents remember — files, recall, notes injection, and long-term context.",
+    description: "How agents remember — topic DAG, vector recall, and git-backed knowledge.",
   },
   {
     slug: "context",
     title: "Context",
-    description: "How the prompt is built — system prompt, token budgets, segmentation, compression, inspection.",
+    description: "Prompt assembly, token budgeting, segmentation, and summary rollups.",
   },
   {
     slug: "caching",
     title: "Caching",
-    description: "Prompt caching — three breakpoints, stable trim boundaries, provider differences, cost savings.",
+    description: "Prompt caching — breakpoints, stable trim boundaries, and cost reduction.",
+  },
+  {
+    slug: "skills",
+    title: "Skills",
+    description: "AgentSkills universal format — dynamic in-chat activation without restarts.",
+  },
+  {
+    slug: "mcp",
+    title: "MCP",
+    description: "Model Context Protocol — extend toolboxes with external MCP servers.",
   },
   {
     slug: "media",
     title: "Media",
-    description: "Multi-modal support — images, PDFs, files. Vision pre-digest, content-addressed storage, inline rendering.",
-  },
-  {
-    slug: "sessions",
-    title: "Sessions",
-    description: "Session lifecycle — JSONL storage, SQLite mirror, crash recovery, message persistence.",
+    description: "Multi-modal vision pre-digest, PDF extraction, and voice message audio I/O.",
   },
   {
     slug: "pairing",
     title: "Pairing",
-    description: "User authentication — pairing codes, operator setup, access control.",
+    description: "Operator pairing codes, access control, and user permission tracking.",
   },
 ];
 
