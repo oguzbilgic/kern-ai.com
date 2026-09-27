@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { DeployTabs } from "./components/DeployTabs";
-import { CopyButton } from "./components/CopyButton";
+import { HighlightYaml } from "./components/HighlightYaml";
 
 export default function Home() {
   return (
@@ -29,10 +29,6 @@ export default function Home() {
 
       {/* Hero */}
       <section className="px-6 pt-20 pb-12 max-w-4xl mx-auto text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[var(--border)] bg-[#111] text-xs text-[var(--muted)] mb-6">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span>Chat-native coworker agents</span>
-        </div>
         <h1 className="text-4xl sm:text-6xl font-bold mb-6 tracking-tight leading-tight">
           Coworker agents that <br className="hidden sm:inline" />
           <span className="text-[var(--accent)]">live in your chat</span>
@@ -43,19 +39,23 @@ export default function Home() {
 
         {/* Hero Quick Commands */}
         <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-6 max-w-xl mx-auto">
-          <div className="w-full sm:w-auto bg-[#111] border border-[var(--border)] rounded-lg px-4 py-3 font-mono text-xs sm:text-sm text-left flex items-center justify-between gap-3 text-neutral-300">
-            <div className="flex items-center gap-2 overflow-x-auto">
-              <span className="text-[var(--muted)] select-none">$</span>
-              <span className="whitespace-nowrap">docker run -d -v ops-home:/home/agent ghcr.io/oguzbilgic/kern-ai</span>
-            </div>
-            <CopyButton text="docker run -d -v ops-home:/home/agent ghcr.io/oguzbilgic/kern-ai" />
-          </div>
           <Link
             href="/docs/docker"
-            className="w-full sm:w-auto shrink-0 bg-[var(--fg)] text-black font-semibold rounded-lg px-5 py-3 text-sm hover:opacity-90 transition-opacity"
+            className="w-full sm:w-auto bg-[var(--fg)] text-black font-semibold rounded-lg px-6 py-3 text-sm hover:opacity-90 transition-opacity"
           >
             Deploy Guide →
           </Link>
+          <a
+            href="https://github.com/oguzbilgic/kern-ai"
+            target="_blank"
+            rel="noreferrer"
+            className="w-full sm:w-auto bg-[#111] border border-[var(--border)] text-neutral-300 font-semibold rounded-lg px-6 py-3 text-sm hover:border-[var(--accent)] hover:text-[var(--fg)] transition-all flex items-center justify-center gap-2"
+          >
+            <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor">
+              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+            </svg>
+            <span>GitHub</span>
+          </a>
         </div>
         <p className="text-xs text-[var(--muted)]">
           No dashboards to host. No ports to expose. One volume per coworker.
@@ -200,13 +200,13 @@ ON orders (account_id, created_at DESC);
 
           <div className="grid md:grid-cols-2 gap-8 items-center">
             {/* Compose Example */}
-            <div className="rounded-xl border border-[var(--border)] bg-black p-5 font-mono text-xs overflow-x-auto">
-              <div className="text-[var(--muted)] mb-3 pb-2 border-b border-[var(--border)] flex justify-between">
-                <span>compose.yaml</span>
-                <span className="text-neutral-500">Docker Compose</span>
+            <div className="rounded-xl border border-[var(--border)] bg-black p-5 font-mono text-xs overflow-x-auto shadow-2xl">
+              <div className="text-[var(--muted)] mb-3 pb-2 border-b border-[var(--border)] flex justify-between items-center">
+                <span className="font-semibold text-neutral-300">compose.yaml</span>
+                <span className="text-neutral-500 text-[11px]">Docker Compose</span>
               </div>
-              <pre className="text-neutral-300 leading-relaxed">
-{`services:
+              <HighlightYaml
+                code={`services:
   ops:
     image: ghcr.io/oguzbilgic/kern-ai
     restart: unless-stopped
@@ -231,7 +231,7 @@ ON orders (account_id, created_at DESC);
 volumes:
   ops-home:
   research-home:`}
-              </pre>
+              />
             </div>
 
             {/* Why it works */}

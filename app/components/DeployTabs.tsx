@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CopyButton } from "./CopyButton";
+import { HighlightYaml } from "./HighlightYaml";
 
 type Tab = "telegram" | "slack" | "matrix" | "compose";
 
@@ -93,9 +94,13 @@ export function DeployTabs() {
 
       {/* Code Body */}
       <div className="p-4 sm:p-5 overflow-x-auto bg-[#0a0a0a]">
-        <pre className="text-neutral-300 leading-relaxed font-mono whitespace-pre">
-          {preset.command}
-        </pre>
+        {active === "compose" ? (
+          <HighlightYaml code={preset.command} />
+        ) : (
+          <pre className="text-neutral-300 leading-relaxed font-mono whitespace-pre">
+            {preset.command}
+          </pre>
+        )}
       </div>
 
       {/* Footer Note */}
