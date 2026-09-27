@@ -6,7 +6,7 @@ export function HighlightYaml({ code }: HighlightYamlProps) {
   const lines = code.split("\n");
 
   return (
-    <div className="font-mono text-xs leading-relaxed">
+    <pre className="font-mono text-xs leading-relaxed whitespace-pre">
       {lines.map((line, idx) => {
         // Comment
         if (line.trim().startsWith("#")) {
@@ -17,39 +17,31 @@ export function HighlightYaml({ code }: HighlightYamlProps) {
           );
         }
 
-        // Key-value or list item
-        // e.g. "  ops:" or "    image: ghcr.io/..." or "    volumes: ["ops-home:/home/agent"]"
-        const colonIndex = line.indexOf(":");
-        if (colonIndex !== -1) {
-          const indentAndKey = line.slice(0, colonIndex);
-          const colonAndRest = line.slice(colonIndex);
-          const rest = colonAndRest.slice(1); // after colon
-
-          // Distinguish key vs value
-          const isListItem = indentAndKey.trim().startsWith("-");
-          
+        // Key-value or list item: match indentation, key/dash, colon, and rest
+        const kvMatch = line.match(/^(\s*)(-\s+)?([a-zA-Z0-9_\-."']+)(\s*:)(.*)$/);
+        if (kvMatch) {
+          const [, indent, dash, key, colon, rest] = kvMatch;
           return (
             <div key={idx}>
-              <span className={isListItem ? "text-neutral-300" : "text-sky-400 font-medium"}>
-                {indentAndKey}
-              </span>
-              <span className="text-neutral-400">:</span>
+              <span>{indent}</span>
+              {dash && <span className="text-neutral-500">{dash}</span>}
+              <span className="text-sky-400 font-medium">{key}</span>
+              <span className="text-neutral-400">{colon}</span>
               {renderYamlValue(rest)}
             </div>
           );
         }
 
-        // List item without colon or other line
-        if (line.trim().startsWith("-")) {
-          const match = line.match(/^(\s*-\s*)(.*)$/);
-          if (match) {
-            return (
-              <div key={idx}>
-                <span className="text-neutral-500">{match[1]}</span>
-                {renderYamlValue(match[2])}
-              </div>
-            );
-          }
+        // Simple list item without colon, e.g. "      - ops-home:/home/agent"
+        const listMatch = line.match(/^(\s*-\s+)(.*)$/);
+        if (listMatch) {
+          const [, dashPart, rest] = listMatch;
+          return (
+            <div key={idx}>
+              <span className="text-neutral-500">{dashPart}</span>
+              {renderYamlValue(" " + rest)}
+            </div>
+          );
         }
 
         return (
@@ -58,7 +50,7 @@ export function HighlightYaml({ code }: HighlightYamlProps) {
           </div>
         );
       })}
-    </div>
+    </pre>
   );
 }
 
@@ -94,11 +86,12 @@ function renderYamlValue(rawVal: string) {
 
   // Array format e.g. ["ops-home:/home/agent"]
   if (valPart.startsWith("[") && valPart.endsWith("]")) {
+    const inner = valPart.slice(1, -1);
     return (
       <>
         <span>{leadingSpace}</span>
         <span className="text-neutral-400">[</span>
-        <span className="text-emerald-400">{valPart.slice(1, -1)}</span>
+        <span className="text-emerald-400">{inner}</span>
         <span className="text-neutral-400">]</span>
         {commentPart && <span className="text-neutral-500">{commentPart}</span>}
       </>
@@ -110,7 +103,7 @@ function renderYamlValue(rawVal: string) {
     return (
       <>
         <span>{leadingSpace}</span>
-        <span className="text-amber-300 font-mono">{valPart}</span>
+        <span className="text-amber-300">{valPart}</span>
         {commentPart && <span className="text-neutral-500">{commentPart}</span>}
       </>
     );

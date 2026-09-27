@@ -39,12 +39,12 @@ export default function Home() {
 
         {/* Hero Quick Commands */}
         <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-6 max-w-xl mx-auto">
-          <Link
-            href="/docs/docker"
+          <a
+            href="#fleet"
             className="w-full sm:w-auto bg-[var(--fg)] text-black font-semibold rounded-lg px-6 py-3 text-sm hover:opacity-90 transition-opacity"
           >
-            Deploy Guide →
-          </Link>
+            Get Started ↓
+          </a>
           <a
             href="https://github.com/oguzbilgic/kern-ai"
             target="_blank"
@@ -189,13 +189,22 @@ ON orders (account_id, created_at DESC);
       </section>
 
       {/* Section: A Fleet is Just Containers */}
-      <section className="px-6 py-20 border-t border-[var(--border)] bg-[#0d0d0d]/60">
+      <section id="fleet" className="px-6 py-20 border-t border-[var(--border)] bg-[#0d0d0d]/60 scroll-mt-12">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-3 tracking-tight">A fleet is just containers</h2>
-            <p className="text-[var(--muted)] max-w-xl mx-auto leading-relaxed">
+            <p className="text-[var(--muted)] max-w-xl mx-auto leading-relaxed mb-6">
               No complex daemon networks or master controllers. Each agent is a directory with its own volume and chat account. Name them after their job:
             </p>
+            <div className="inline-flex justify-center">
+              <Link
+                href="/docs/docker"
+                className="inline-flex items-center gap-2 bg-[var(--fg)] text-black font-semibold rounded-lg px-5 py-2.5 text-xs sm:text-sm hover:opacity-90 transition-opacity"
+              >
+                <span>Deploy Guide</span>
+                <span>→</span>
+              </Link>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 items-center">
