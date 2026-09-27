@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { DeployTabs } from "./components/DeployTabs";
+import { CopyButton } from "./components/CopyButton";
 
 export default function Home() {
   return (
@@ -41,15 +43,18 @@ export default function Home() {
 
         {/* Hero Quick Commands */}
         <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-6 max-w-xl mx-auto">
-          <div className="w-full sm:w-auto bg-[#111] border border-[var(--border)] rounded-lg px-4 py-3 font-mono text-xs sm:text-sm text-left flex items-center justify-between gap-3 text-neutral-300 overflow-x-auto">
-            <span className="text-[var(--muted)] select-none">$</span>
-            <span className="truncate">docker run -d -v ops-home:/home/agent ghcr.io/oguzbilgic/kern-ai</span>
+          <div className="w-full sm:w-auto bg-[#111] border border-[var(--border)] rounded-lg px-4 py-3 font-mono text-xs sm:text-sm text-left flex items-center justify-between gap-3 text-neutral-300">
+            <div className="flex items-center gap-2 overflow-x-auto">
+              <span className="text-[var(--muted)] select-none">$</span>
+              <span className="whitespace-nowrap">docker run -d -v ops-home:/home/agent ghcr.io/oguzbilgic/kern-ai</span>
+            </div>
+            <CopyButton text="docker run -d -v ops-home:/home/agent ghcr.io/oguzbilgic/kern-ai" />
           </div>
           <Link
-            href="/docs"
+            href="/docs/docker"
             className="w-full sm:w-auto shrink-0 bg-[var(--fg)] text-black font-semibold rounded-lg px-5 py-3 text-sm hover:opacity-90 transition-opacity"
           >
-            Get Started →
+            Deploy Guide →
           </Link>
         </div>
         <p className="text-xs text-[var(--muted)]">
@@ -401,14 +406,12 @@ matrix({ action: "widget" })`}
         <p className="text-xs sm:text-sm text-[var(--muted)] mb-8 max-w-lg mx-auto">
           Give it a container, a bot token, and a volume. It remembers everything from here.
         </p>
-        <div className="bg-[#111] border border-[var(--border)] rounded-lg p-5 font-mono text-xs max-w-xl mx-auto text-left mb-8 space-y-2">
-          <div><span className="text-[var(--muted)]"># 1. Run container with your Slack or Telegram token</span></div>
-          <div className="text-neutral-300 overflow-x-auto">docker run -d --restart=unless-stopped -v ops-home:/home/agent -e KERN_NAME=ops -e TELEGRAM_BOT_TOKEN=... ghcr.io/oguzbilgic/kern-ai</div>
-          <div className="pt-2"><span className="text-[var(--muted)]"># 2. DM the bot — first sender is auto-paired as operator</span></div>
+        <div className="max-w-xl mx-auto mb-8">
+          <DeployTabs />
         </div>
         <div className="flex gap-6 justify-center text-xs font-semibold">
-          <Link href="/docs" className="text-[var(--accent)] hover:underline">
-            Read Documentation →
+          <Link href="/docs/docker" className="text-[var(--accent)] hover:underline">
+            Read Docker Guide →
           </Link>
           <a href="https://github.com/oguzbilgic/kern-ai" className="text-[var(--muted)] hover:text-[var(--fg)] transition-colors">
             GitHub Repo →
